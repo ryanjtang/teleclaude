@@ -21,6 +21,10 @@ type: project
 
 ### General
 - [x] **OPNsense config backup strategy** — Covered by Proxmox full VM backup to NAS. (2026-03-28)
+- [ ] **Tighten UFW rules for admin UIs** — Restrict Z-Wave JS UI (8091), Portainer (9443), Dockge (5100) to LAN subnet only instead of Anywhere. Leave user-facing services (HA, Frigate, etc.) open on LAN.
+- [ ] **Enable IGMP snooping on switch** — Omada UI: Settings → Wired Networks → LAN → Advanced → IGMP Snooping. Prevents multicast flooding across VLANs.
+- [ ] **HA dashboard build** — Build dashboard with infra status (ping sensors), server health (system monitor), camera feeds (Frigate), media players. Pending: add System Monitor + Ping integrations via HA UI first.
+- [ ] **Uptime Kuma HA integration** — Add via HACS custom repo for service monitoring on HA dashboard.
 - [x] **Docker host backup to NAS** — Nightly rsync (2 AM) + weekly disk image (Sunday 3 AM) to NAS:/volume1/HomelabBackup/nvr/. NFS mounted at /mnt/HomelabBackup via fstab. Restore guide at RESTORE.md on NAS. Script: /home/ryan/backup.sh. Keeps 2 most recent images. (2026-03-28)
 - [x] **Fix CrowdSec Suricata parsing** — Acquisition label was `suricata` but parser expected `suricata-evelogs`. Fixed in /usr/local/etc/crowdsec/acquis.d/suricata.yaml. (2026-03-28)
 - [x] **Clean up orphaned ACME config** — Removed orphaned AcmeClient cron job and config remnants from OPNsense config.xml. Plugin was already uninstalled. (2026-03-28)
